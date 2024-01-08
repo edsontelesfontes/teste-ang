@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class EmployeeService {
   constructor(private http: HttpClient) { }
 
-   api = environment.api;
+    api = environment.api;
     endpoint = "empregados"
 
 
@@ -22,7 +22,8 @@ export class EmployeeService {
     );
   }
 
-  createEmployee(employee:IEmployee){
-    return this.http.post(`${this.api}/${this.endpoint}`, employee);
+  deleteEmployee(employee:IEmployee){
+    console.log("no delete service", employee.id)
+    return this.http.delete(`${this.api}/${this.endpoint}/${employee.id}`);
   }
 }

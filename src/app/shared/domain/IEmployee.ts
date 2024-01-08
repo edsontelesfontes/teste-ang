@@ -1,6 +1,6 @@
 import { FormControl } from "@angular/forms";
 export interface IEmployee{
-    // id: FormControl<string>;
+     id: FormControl<string> | null;
 
 
     nome: FormControl<string>;

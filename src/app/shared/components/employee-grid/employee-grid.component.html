@@ -26,9 +26,10 @@
         <td>
           <!-- <a type="button" (click)="deletarCliente(clientes.cpf)"><i class="fa-solid fa-wand-magic-sparkles"></i></a> -->
           <a type="button" (click)="selectionItem(employees)"><i class="fa-solid fa-circle-xmark me-3"></i></a>
-  
           <!-- <a type="button" (click)="updateClient(clientes.cpf)"><i class="fa-solid fa-pen"></i></a> -->
         </td>
+        <app-del-modal [employeeModal]="employeeGrid"></app-del-modal>
+        <app-info-modal [employee]="employeeGrid"></app-info-modal>
       </tr>
     </tbody>
   </table>

@@ -3,6 +3,7 @@ import { EmployeeService } from './../../service/employee/employee.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IEmployee } from '../../domain/IEmployee';
+import { ModalService } from '../../service/modal/modal.service';
 
 @Component({
   selector: 'app-employee-grid',
@@ -10,11 +11,13 @@ import { IEmployee } from '../../domain/IEmployee';
   styleUrls: ['./employee-grid.component.css']
 })
 export class EmployeeGridComponent {
-  constructor(private EmployeeServicervice: EmployeeService, private router: Router) { }
+  constructor(private EmployeeServicervice: EmployeeService,
+     private router: Router,
+     private modal: ModalService) { }
   listEmployee$!: Observable<IEmployee[]>;
 
-  //@Output() employeeGrid!: IEmployee;
-  @Output() employeeGrid: EventEmitter<any> = new EventEmitter;
+  @Output() employeeGrid!: IEmployee;
+ // @Output() employeeGrid: EventEmitter<any> = new EventEmitter;
   //employeeSelected!: IEmployee;
   
   ngOnInit(): void {
@@ -22,7 +25,9 @@ export class EmployeeGridComponent {
   }
 
   selectionItem(employeeSelected: IEmployee){
+    this.employeeGrid = employeeSelected;
     console.log(employeeSelected);
-    this.employeeGrid.emit( employeeSelected);
+    this.modal.openModal();
+    //this.employeeGrid.emit( employeeSelected);
   }
 }
